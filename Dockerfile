@@ -38,7 +38,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -q \
     && touch /etc/nginx/auth_part1.conf \
              /etc/nginx/auth_part2.conf \
              /etc/nginx/request_size.conf \
-             /etc/nginx/main_location.conf \
              /etc/nginx/trusted_proxies.conf \
              /tmp/htpasswd
 
@@ -50,6 +49,7 @@ COPY auth_part*.conf /root/
 COPY dhparams.pem /etc/nginx/
 COPY temp-setup-cert.pem /etc/nginx/temp-server-cert.pem
 COPY temp-setup-key.pem /etc/nginx/temp-server-key.pem
+COPY main_location.conf /etc/nginx/main_location.conf
 
 VOLUME "/etc/letsencrypt"
 
